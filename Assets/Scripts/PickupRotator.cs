@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Rotator : MonoBehaviour
+public class PickupRotator : MonoBehaviour
 {
 	
 	// Update is called once per frame
