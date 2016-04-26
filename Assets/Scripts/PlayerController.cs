@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
 	// creates speed, public allows easy editing
 	public float speed;
 
 	private Rigidbody rb;
 
-	void Start () {
+	void Start ()
+	{
 		rb = GetComponent<Rigidbody>();
 	}
 	
 
-	void FixedUpdate () {
+	void FixedUpdate ()
+	{
 		// a float to hold horizontal input
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		// a float to hold vertical input
@@ -25,5 +28,13 @@ public class PlayerController : MonoBehaviour {
 		// adds force to player object based on horizontal and
 		// vertical movement and a set player speed
 		rb.AddForce (movement * speed);
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag ("PickUp"))
+		{
+			other.gameObject.SetActive (false);
+		}
 	}
 }
